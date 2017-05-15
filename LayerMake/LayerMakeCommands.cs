@@ -33,7 +33,8 @@ namespace LayerMake
         [CommandMethod("lm", CommandFlags.Modal)]
         public void MyCommand4()
         {
-            
+            LayerMakeForm layerMaker = new LayerMakeForm();
+            layerMaker.Show();
         }
 
         [CommandMethod("ltest", CommandFlags.Modal)]

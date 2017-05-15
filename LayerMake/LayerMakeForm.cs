@@ -27,7 +27,8 @@ namespace LayerMake
         /// <summary>
         /// The path to the location of the xml file with the segments of layer names
         /// </summary>
-        private string path; ////= @"c:\users\wgoldsmith\documents\visual studio 2015\projects\layermake\layermake\layermake.xml";
+        private string path= @"c:\users\wgoldsmith\documents\visual studio 2015\projects\layermake\layermake\layermake.xml";
+// take out path if call is changed to take the path as an argument
 
         /// <summary>
         /// A child form that is used to show ListBoxes in a larger window
@@ -65,13 +66,24 @@ namespace LayerMake
         private string entityDescSeg3;
 
         /// <summary>
+        /// List of Layer objects that have all the information for the AutoCAD layers to be created.
+        /// the key is a string that will be the layer name
+        /// </summary>
+        private Dictionary<string, Layer> layerList = new Dictionary<string, Layer>();
+
+        /// <summary>
         /// Initializes a new instance of the LayerMakeForm class. Auto generated constructor for LayerMakeForm
         /// </summary>
-        public LayerMakeForm(string p)
+        public LayerMakeForm()
         {
-            this.path = @p; // @ makes the string literal so that slashes in path will not be escaped
             this.InitializeComponent();
         }
+
+        //        public LayerMakeForm(string p)
+        //        {
+        //            this.path = @p; // @ makes the string literal so that slashes in path will not be escaped
+        //            this.InitializeComponent();
+        //        }
 
         /// <summary>
         /// Reads layermake.xml and adds all the seg elements into the 4 list boxes
@@ -343,7 +355,8 @@ namespace LayerMake
                 this.layersListBox.Items.Add(this.layerTextBox.Text);
             }
 
-            //////////// Make new layer with given name, as long as there isn't one already
+ //////////// add new Layer to layerList
+            /// layerList.add(this.layerTextBox.Text, new Layer(this.layerTextBox.Text));
         }
 
         /// <summary>
@@ -447,7 +460,7 @@ namespace LayerMake
                 this.disableButtons(); // don't select anything and disable buttons
             }
 
-            //////////// Delete layer
+//////////// Remove layer from layerList
         }
 
         /// <summary>
@@ -457,7 +470,9 @@ namespace LayerMake
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
         private void colorButton_Click(object sender, EventArgs e)
         {
-            //////////// Open layer color editor
+//////////// Open layer color editor
+//// add red, green, blue to LayerList item
+            //// layerList[selectedItem.text].SetColor(r, g, b);
         }
 
         /// <summary>
@@ -467,7 +482,9 @@ namespace LayerMake
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
         private void ltypeButton_Click(object sender, EventArgs e)
         {
-            //////////// Open layer line type editor
+//////////// Open layer line type editor
+//// add line to layerList item
+            //// /// layerList[selectedItem.text].SetColor(lineName);
         }
 
         /// <summary>
@@ -511,7 +528,6 @@ namespace LayerMake
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            //////////// Delete all made layers from AutoCAD drawing
             this.Close();
         }
 

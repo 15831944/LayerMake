@@ -94,6 +94,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Layer.cs" />
     <Compile Include="LayerMakeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +121,9 @@
       <DependentUpon>LayerMakeCommands.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LayerMakeCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerMakeForm.resx">
+      <DependentUpon>LayerMakeForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
