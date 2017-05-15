@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--When adding new segments, the tag and description must be seperated by a TAB-->
+<!--Like: A As-built-->
+<!--    TAB^     it looks small, but it is a tab-->
+<namesegments>
+  <datastate>
+    <dsseg>A	As-built</dsseg>
+    <dsseg>D	Drawing</dsseg>
+    <dsseg>F	Future</dsseg>
+    <dsseg>P	Proposed</dsseg>
+    <dsseg>W	Working</dsseg>
+    <dsseg>X	Existing</dsseg>
+  </datastate>
+
+  <category>
+    <cseg>AM	Amenities </cseg>
+    <cseg>BG	Building </cseg>
+    <cseg>CA	Cable T.V. </cseg>
+    <cseg>DT	Detention </cseg>
+    <cseg>EL	Electrical/Power </cseg>
+    <cseg>EN	Engineering </cseg>
+    <cseg>EC	Erosion Control </cseg>
+    <cseg>FO	Fiber Optic Cable </cseg>
+    <cseg>GA	Gas </cseg>
+    <cseg>GI	General Information </cseg>
+    <cseg>GF	Golf Course </cseg>
+    <cseg>GR	Grading </cseg>
+    <cseg>IN	Insert </cseg>
+    <cseg>IR	Irrigation </cseg>
+    <cseg>LL	Lot Lines/ROW/Boundary </cseg>
+    <cseg>RD	Road </cseg>
+    <cseg>SS	Sanitary Sewer </cseg>
+    <cseg>SH	Sheet </cseg>
+    <cseg>SD	Storm Drain </cseg>
+    <cseg>SC	Survey Control </cseg>
+    <cseg>TE	Telephone </cseg>
+    <cseg>TP	Topography </cseg>
+    <cseg>TF	Topographic Features </cseg>
+    <cseg>UT	Utility</cseg>
+    <cseg>WT	Water</cseg>
+  </category>
+
+  <entitytype>
+    <etseg>D	Dimensions</etseg>
+    <etseg>H	Hatch</etseg>
+    <etseg>L	Line</etseg>
+    <etseg>P	Point</etseg>
+    <etseg>S	Symbol</etseg>
+    <etseg>T	Text</etseg>
+    <etseg>O	Civil 3D Object</etseg>
+    <etseg>E	Civil 3D Label</etseg>
+  </entitytype>
+
+  <entitydescriptor>
+    <edseg>Z	Filler Character </edseg>
+    <edseg>ABN	Abandoned </edseg>
+    <edseg>ACC	Access </edseg>
+    <edseg>ADD	Address </edseg>
+    <edseg>ADS	Advanced Drainage Systems </edseg>
+    <edseg>AIR	Air (Valve) </edseg>
+    <edseg>ALD	Alder </edseg>
+    <edseg>ALG	Alignment </edseg>
+    <edseg>APW	American Public Works Association </edseg>
+    <edseg>AST	American Society for Testing Material </edseg>
+    <edseg>ANC	Anchor </edseg>
+    <edseg>ANG	Angle </edseg>
+    <edseg>ANO	Annotate </edseg>
+    <edseg>APT	Apartment </edseg>
+    <edseg>APL	Apple </edseg>
+    <edseg>APP	Approval </edseg>
+    <edseg>ARE	Area </edseg>
+    <edseg>AR	Arrow </edseg>
+    <edseg>AC	Asbestos Cement </edseg>
+    <edseg>ASP	Asphalt </edseg>
+    <edseg>ATB	Asphalt Treated Base </edseg>
+    <edseg>ACV	Automatic Control Value </edseg>
+    <edseg>AVB	Automatic Vacuum Breaker </edseg>
+    <edseg>AV	Combination Air &amp; Vacuum Relief Valve </edseg>
+    <edseg>BCK	Back </edseg>
+    <edseg>BLV	Ball Valve </edseg>
+    <edseg>BNK	Bank </edseg>
+    <edseg>BBW	Barbed Wire </edseg>
+    <edseg>BAR	Barrier </edseg>
+    <edseg>BSN	Basin </edseg>
+    <edseg>BBH	Basket Ball Hoop </edseg>
+    <edseg>BRG	Bearing </edseg>
+    <edseg>BOC	Beginning of Curb </edseg>
+    <edseg>BM	Benchmark </edseg>
+    <edseg>BRM	Berm </edseg>
+    <edseg>BW	Bike Way </edseg>
+    <edseg>BIO	Bioswale </edseg>
+    <edseg>BLK	Block </edseg>
+    <edseg>BO	Blow Off </edseg>
+    <edseg>BOL	Bollard </edseg>
+    <edseg>BDR	Border </edseg>
+    <edseg>BOR	Boring </edseg>
+    <edseg>BOT	Bottom </edseg>
+    <edseg>BDY	Boundary </edseg>
+    <edseg>BX	Box </edseg>
+    <edseg>BRK	Break </edseg>
+    <edseg>BL	Break Line </edseg>
+    <edseg>BK	Brick </edseg>
+    <edseg>BRD	Bridge </edseg>
+    <edseg>BRU	Brush </edseg>
+    <edseg>BUF	Buffer </edseg>
+    <edseg>BG	Building </edseg>
+    <edseg>BSL	Building Setback Line </edseg>
+    <edseg>BLK	Bulkhead </edseg>
+    <edseg>BUR	Buried </edseg>
+    <edseg>BV	Butterfly Valve </edseg>
+    <edseg>CAN	Canopy </edseg>
+    <edseg>CBL	Cable </edseg>
+    <edseg>CAL	Caliper </edseg>
+    <edseg>CPT	Carport </edseg>
+    <edseg>CRT	Cart </edseg>
+    <edseg>CST	Cast Iron </edseg>
+    <edseg>CAT	Catch </edseg>
+    <edseg>CB	Catch Basin </edseg>
+    <edseg>CED	Cedar </edseg>
+    <edseg>CEL	Cell </edseg>
+    <edseg>CTR	Center </edseg>
+    <edseg>CL	Centerline </edseg>
+    <edseg>CTF	Certification </edseg>
+    <edseg>CLK	Chain Link </edseg>
+    <edseg>CHN	Channel </edseg>
+    <edseg>CKD	Checkdam </edseg>
+    <edseg>CHY	Cherry </edseg>
+    <edseg>CO	Clean Out</edseg>
+    <edseg>CLR	Clearance </edseg>
+    <edseg>CLG	Clearing </edseg>
+    <edseg>CP	Clip </edseg>
+    <edseg>CLD	Cloud </edseg>
+    <edseg>CLP	Clump/Cluster </edseg>
+    <edseg>CC	Concrete </edseg>
+    <edseg>CDO	Condo </edseg>
+    <edseg>CD	Conduit </edseg>
+    <edseg>CON	Conifer </edseg>
+    <edseg>CNS	Construction </edseg>
+    <edseg>CNT	Continuous </edseg>
+    <edseg>CN	Contour </edseg>
+    <edseg>CTL	Control </edseg>
+    <edseg>TIC	Coordinate, or Grid Mark </edseg>
+    <edseg>COR	Corner </edseg>
+    <edseg>CM	Corrugated Metal </edseg>
+    <edseg>CRK	Creek </edseg>
+    <edseg>CR	Cross </edseg>
+    <edseg>CRS	Crossing </edseg>
+    <edseg>CV	Culvert </edseg>
+    <edseg>CG	Curb and Gutter </edseg>
+    <edseg>CI	Curb Inlet </edseg>
+    <edseg>CU	Curb </edseg>
+    <edseg>CUT	Cut </edseg>
+    <edseg>DAT	Datum </edseg>
+    <edseg>DAY	Daylight </edseg>
+    <edseg>DEA	Dead </edseg>
+    <edseg>DEC	Deciduous </edseg>
+    <edseg>DCK	Deck </edseg>
+    <edseg>DEP	Depression</edseg>
+    <edseg>DSC	Descriptor</edseg>
+    <edseg>DES	Design </edseg>
+    <edseg>DJ	Designjet Plotter </edseg>
+    <edseg>D	Detail </edseg>
+    <edseg>DT	Detention </edseg>
+    <edseg>DIA	Diameter </edseg>
+    <edseg>DIM	Dimension </edseg>
+    <edseg>DIR	Direction </edseg>
+    <edseg>DRT	Dirt </edseg>
+    <edseg>DSP	Dispersion </edseg>
+    <edseg>DST	Distance </edseg>
+    <edseg>DCH	Ditch </edseg>
+    <edseg>DDC	Double Detector Check </edseg>
+    <edseg>DRN	Drain </edseg>
+    <edseg>DW	Drive or Driveway </edseg>
+    <edseg>DRP	Drop </edseg>
+    <edseg>DU	Duct </edseg>
+    <edseg>DI	Ductile Iron</edseg>
+    <edseg>DMP	Dumpster </edseg>
+    <edseg>EAR	Earthwork </edseg>
+    <edseg>ESM	Easement </edseg>
+    <edseg>E	East </edseg>
+    <edseg>EC	Edge of	Clearing </edseg>
+    <edseg>EP	Edge of Pavement </edseg>
+    <edseg>EDG	Edge </edseg>
+    <edseg>ELV	Elevation </edseg>
+    <edseg>EPS	Ellipse </edseg>
+    <edseg>ENC	Enclosure </edseg>
+    <edseg>END	End </edseg>
+    <edseg>ENG	Engineer </edseg>
+    <edseg>ENT	Entrance </edseg>
+    <edseg>ERR	Error </edseg>
+    <edseg>EXC	Excavation </edseg>
+    <edseg>EXN	Exception </edseg>
+    <edseg>EXP	Expansion </edseg>
+    <edseg>EXT	Extruded </edseg>
+    <edseg>FOC	Face of	Curb </edseg>
+    <edseg>FAC	Facility </edseg>
+    <edseg>FWY	Fairway </edseg>
+    <edseg>FNC	Fence </edseg>
+    <edseg>FLD	Field </edseg>
+    <edseg>FIG	Figure </edseg>
+    <edseg>F	Fill </edseg>
+    <edseg>FIL	Filter </edseg>
+    <edseg>FF	Finished Floor </edseg>
+    <edseg>FG	Finished Grade </edseg>
+    <edseg>FIR	Fir </edseg>
+    <edseg>FR	Fire </edseg>
+    <edseg>FLG	Flag </edseg>
+    <edseg>FLP	Floodplain </edseg>
+    <edseg>FLT	Flat </edseg>
+    <edseg>FLR	Floor </edseg>
+    <edseg>FL	Flow Line </edseg>
+    <edseg>FCS	Flow Control Structure </edseg>
+    <edseg>FOG	Fog Line </edseg>
+    <edseg>FM	Force Main </edseg>
+    <edseg>FOU	Foundation </edseg>
+    <edseg>FUT	Future </edseg>
+    <edseg>GAO	Gabion </edseg>
+    <edseg>GLV	Galvanize/Galvanized (Pipe) </edseg>
+    <edseg>GAR	Garage </edseg>
+    <edseg>GT	Gate </edseg>
+    <edseg>GAB	Gazebo </edseg>
+    <edseg>GEN	General </edseg>
+    <edseg>GPS	Global Positioning System </edseg>
+    <edseg>GRD	Grade </edseg>
+    <edseg>GRS	Grass </edseg>
+    <edseg>GVL	Gravel </edseg>
+    <edseg>GR	Grid </edseg>
+    <edseg>GND	Ground </edseg>
+    <edseg>GDR	Guard Rail </edseg>
+    <edseg>GTR	Gutter </edseg>
+    <edseg>GUY	Guy </edseg>
+    <edseg>HH	Handhole </edseg>
+    <edseg>HAN	Handicap </edseg>
+    <edseg>HAZ	Hazard </edseg>
+    <edseg>HDG	Hedge </edseg>
+    <edseg>HEM	Hemlock </edseg>
+    <edseg>HID	Hidden </edseg>
+    <edseg>HP	High Pressure </edseg>
+    <edseg>HOR	Horizontal </edseg>
+    <edseg>HSE	House </edseg>
+    <edseg>HUB	Hub </edseg>
+    <edseg>HYD	Hydrant </edseg>
+    <edseg>HGL	Hydraulic Grade Line </edseg>
+    <edseg>INL	Inlet </edseg>
+    <edseg>INC	Interceptor </edseg>
+    <edseg>INR	Intermediate </edseg>
+    <edseg>ITR	Intermittent </edseg>
+    <edseg>INT	Intersection </edseg>
+    <edseg>IE	Invert Elevation	</edseg>
+    <edseg>IRN	Iron </edseg>
+    <edseg>IPC	Iron Pin &amp; Cap	</edseg>
+    <edseg>IR	Irrigation </edseg>
+    <edseg>ISL	Island </edseg>
+    <edseg>JT	Joint </edseg>
+    <edseg>JU	Junction </edseg>
+    <edseg>KEY	Key </edseg>
+    <edseg>LAK	Lake </edseg>
+    <edseg>LDS	Landscaping </edseg>
+    <edseg>LED	Lead </edseg>
+    <edseg>LE	Leader </edseg>
+    <edseg>LT	Left </edseg>
+    <edseg>LEG	Legal Description </edseg>
+    <edseg>LGN	Legend </edseg>
+    <edseg>LVS	Level Spreader </edseg>
+    <edseg>LS	Lift Station</edseg>
+    <edseg>LI	Light </edseg>
+    <edseg>LIM	Limit </edseg>
+    <edseg>L	Line </edseg>
+    <edseg>LF	Lineal Foot </edseg>
+    <edseg>LOT	Lots </edseg>
+    <edseg>LU	Luminaire </edseg>
+    <edseg>MDR	Madrona </edseg>
+    <edseg>MA	Mail </edseg>
+    <edseg>MN	Main </edseg>
+    <edseg>MJR	Major </edseg>
+    <edseg>MH	Manhole </edseg>
+    <edseg>MPL	Maple </edseg>
+    <edseg>MGN	Margin </edseg>
+    <edseg>MKR	Marker </edseg>
+    <edseg>MAR	Marking </edseg>
+    <edseg>MAX	Maximum </edseg>
+    <edseg>MEC	Mechanical </edseg>
+    <edseg>MED	Median </edseg>
+    <edseg>MTR	Meter </edseg>
+    <edseg>MIN	Minimum </edseg>
+    <edseg>MNR	Minor </edseg>
+    <edseg>MIS	Miscellaneous </edseg>
+    <edseg>MIT	Mitigation </edseg>
+    <edseg>MNT	Monitoring </edseg>
+    <edseg>MIC	Monument in Case </edseg>
+    <edseg>MON	Monument </edseg>
+    <edseg>MPH	Morphology </edseg>
+    <edseg>MLT	Multiple </edseg>
+    <edseg>NM	Name </edseg>
+    <edseg>NGV	National Geodetic Vertical Datum 1929 </edseg>
+    <edseg>NGS	National Geodetic Survey </edseg>
+    <edseg>NGP	Native Growth Protection Easement </edseg>
+    <edseg>NC	Neighborhood Collector </edseg>
+    <edseg>NOD	Node </edseg>
+    <edseg>NOR	Normal </edseg>
+    <edseg>NAV	North American Vertical Datum 1988 </edseg>
+    <edseg>N	North </edseg>
+    <edseg>NOT	Note(s) </edseg>
+    <edseg>NJ	Novajet Plotter </edseg>
+    <edseg>NUM	Number </edseg>
+    <edseg>OAK	Oak (Tree) </edseg>
+    <edseg>OCE	Ocean </edseg>
+    <edseg>OFS	Offsite </edseg>
+    <edseg>OLD	Old </edseg>
+    <edseg>ORC	Orchard </edseg>
+    <edseg>OTF	Outfall </edseg>
+    <edseg>OVF	Overflow </edseg>
+    <edseg>OH	Overhead </edseg>
+    <edseg>OWN	Owner </edseg>
+    <edseg>PS	Pacsoft </edseg>
+    <edseg>PAD	Pad </edseg>
+    <edseg>PLM	Palm </edseg>
+    <edseg>PAR	Parcel </edseg>
+    <edseg>PRK	Park </edseg>
+    <edseg>PKC	Parking </edseg>
+    <edseg>PTH	Path </edseg>
+    <edseg>PAV	Pavement </edseg>
+    <edseg>PEL	Pedestal </edseg>
+    <edseg>PED	Pedestrian </edseg>
+    <edseg>PRF	Perforated </edseg>
+    <edseg>PHS	Phase </edseg>
+    <edseg>PIN	Pine </edseg>
+    <edseg>PI	Pipe </edseg>
+    <edseg>PK	PK Nail </edseg>
+    <edseg>PE	Plain End </edseg>
+    <edseg>P	Plan </edseg>
+    <edseg>PLA	Planter </edseg>
+    <edseg>PLT	Plat </edseg>
+    <edseg>PLG	Playground </edseg>
+    <edseg>PLU	Plug </edseg>
+    <edseg>PTI	Point of Intersection </edseg>
+    <edseg>PTC	Point of Tangency </edseg>
+    <edseg>PRC	Point of Reverse Curve </edseg>
+    <edseg>POC	Point on Curve </edseg>
+    <edseg>PNT	Point </edseg>
+    <edseg>PCC	Point of Compound Curve </edseg>
+    <edseg>PTC	Point of Curvature </edseg>
+    <edseg>POL	Pole </edseg>
+    <edseg>PVC	Polyvinyl Chloride (Pipe) </edseg>
+    <edseg>PND	Pond </edseg>
+    <edseg>POO	Pool </edseg>
+    <edseg>PST	Post </edseg>
+    <edseg>PSI	Pounds per Square Inch </edseg>
+    <edseg>LB	Pounds </edseg>
+    <edseg>PRV	Pressure Reducing (Valve) </edseg>
+    <edseg>PRI	Primary </edseg>
+    <edseg>PVT	Private </edseg>
+    <edseg>PR	Profile </edseg>
+    <edseg>PRJ	Projection </edseg>
+    <edseg>PL	Property Line </edseg>
+    <edseg>PMP	Pump </edseg>
+    <edseg>QTY	Quantity </edseg>
+    <edseg>QRY	Quarry </edseg>
+    <edseg>RA	Radius </edseg>
+    <edseg>RR	Railroad </edseg>
+    <edseg>RMP	Ramp </edseg>
+    <edseg>RGE	Range </edseg>
+    <edseg>RVN	Ravine </edseg>
+    <edseg>RED	Reducer </edseg>
+    <edseg>REG	Regulator </edseg>
+    <edseg>REL	Relocate </edseg>
+    <edseg>RET	Retaining (Wall)</edseg>
+    <edseg>RT	Retention </edseg>
+    <edseg>REV	Revision/Revised </edseg>
+    <edseg>RDG	Ridge </edseg>
+    <edseg>RI	Right </edseg>
+    <edseg>ROW	Right-of-way</edseg>
+    <edseg>RPP	Rip-rap </edseg>
+    <edseg>RSR	Riser </edseg>
+    <edseg>RIV	River </edseg>
+    <edseg>RD	Road </edseg>
+    <edseg>RK	Rock </edseg>
+    <edseg>RCK	Rockery </edseg>
+    <edseg>ROL	Rolled </edseg>
+    <edseg>RF	Roof </edseg>
+    <edseg>RUF	Rough </edseg>
+    <edseg>X	Scale </edseg>
+    <edseg>SCL	Scale </edseg>
+    <edseg>SEC	Section </edseg>
+    <edseg>STR	Section-Township-Range </edseg>
+    <edseg>SED	Sediment </edseg>
+    <edseg>SA	Sensitive Area </edseg>
+    <edseg>SVC	Service </edseg>
+    <edseg>SLF	Shelf (as in Detention Ponds) </edseg>
+    <edseg>SHR	Shore </edseg>
+    <edseg>SDR	Shoulder </edseg>
+    <edseg>SWK	Sidewalk </edseg>
+    <edseg>SGT	Sight </edseg>
+    <edseg>SGN	Sign </edseg>
+    <edseg>SGL	Signal </edseg>
+    <edseg>SLV	Sleeve </edseg>
+    <edseg>SL	Slope </edseg>
+    <edseg>STP	Soil Test Pit </edseg>
+    <edseg>S	South </edseg>
+    <edseg>SPC	Specification (s)	</edseg>
+    <edseg>SPL	Spillway </edseg>
+    <edseg>SPT	Spot </edseg>
+    <edseg>SP	Sprinkler </edseg>
+    <edseg>SPR	Spruce </edseg>
+    <edseg>SQ	Square </edseg>
+    <edseg>STP	Stamp </edseg>
+    <edseg>STA	Station </edseg>
+    <edseg>STL	Steel </edseg>
+    <edseg>SPS	Steps </edseg>
+    <edseg>STN	Stone </edseg>
+    <edseg>SBR	Stop Bar </edseg>
+    <edseg>STO	Storage </edseg>
+    <edseg>STM	Stream </edseg>
+    <edseg>ST	Street </edseg>
+    <edseg>STI	Striping </edseg>
+    <edseg>STC	Structural/Structure </edseg>
+    <edseg>STB	Stub </edseg>
+    <edseg>SUB	Subdivision </edseg>
+    <edseg>SUR	Surface </edseg>
+    <edseg>SVY	Survey </edseg>
+    <edseg>SWL	Swale </edseg>
+    <edseg>SWA	Swamp </edseg>
+    <edseg>SWI	Switch </edseg>
+    <edseg>TAC	Tack </edseg>
+    <edseg>TNK	Tank </edseg>
+    <edseg>TPR	Taper </edseg>
+    <edseg>TEE	Tee </edseg>
+    <edseg>TLM	Telemetry </edseg>
+    <edseg>TPL	Template </edseg>
+    <edseg>TMP	Temporary </edseg>
+    <edseg>TIC	Tick </edseg>
+    <edseg>TDF	Tideflat </edseg>
+    <edseg>TTL	Title </edseg>
+    <edseg>TOE	Toe </edseg>
+    <edseg>TOP	Top </edseg>
+    <edseg>TOC	Top of Curb </edseg>
+    <edseg>TWR	Tower </edseg>
+    <edseg>TWP	Township </edseg>
+    <edseg>TRA	Tract </edseg>
+    <edseg>TRL	Trail </edseg>
+    <edseg>TLR	Trailer </edseg>
+    <edseg>TRN	Transformers </edseg>
+    <edseg>TRS	Transition </edseg>
+    <edseg>TRP	Trap </edseg>
+    <edseg>TRV	Traverse </edseg>
+    <edseg>TRE	Tree </edseg>
+    <edseg>TCH	Trench </edseg>
+    <edseg>TRI	Triple </edseg>
+    <edseg>TWN	Twin </edseg>
+    <edseg>T1	Type 1 </edseg>
+    <edseg>T2	Type 2 </edseg>
+    <edseg>TYP	Typical </edseg>
+    <edseg>UDG	Underground </edseg>
+    <edseg>UND	Undisturbed </edseg>
+    <edseg>UT	Utilities </edseg>
+    <edseg>VLV	Valve </edseg>
+    <edseg>VLT	Vault </edseg>
+    <edseg>VEG	Vegetation </edseg>
+    <edseg>VNT	Vent </edseg>
+    <edseg>VC	Vertical Curve </edseg>
+    <edseg>VER	Vertical </edseg>
+    <edseg>VIC	Vicinity </edseg>
+    <edseg>VP	Viewport </edseg>
+    <edseg>VOL	Volume </edseg>
+    <edseg>WK	Walk </edseg>
+    <edseg>WAL	Wall </edseg>
+    <edseg>DOT	Wash. State Department of Transportation </edseg>
+    <edseg>WDT	Water Drop Track </edseg>
+    <edseg>DOH	Washington State Department of Health </edseg>
+    <edseg>WQP	Water Quality Pond </edseg>
+    <edseg>WS	Water Surface </edseg>
+    <edseg>WEL	Well </edseg>
+    <edseg>W	West </edseg>
+    <edseg>WL	Wet Land </edseg>
+    <edseg>WP	Wet Pond </edseg>
+    <edseg>WHC	Wheelchair </edseg>
+    <edseg>WST	Wheelstop</edseg>
+    <edseg>WDW	Window	</edseg>
+    <edseg>WIR	Wire </edseg>
+    <edseg>WOD	Wood </edseg>
+    <edseg>YD	Yard </edseg>
+    <edseg>ZON	Zoning</edseg>
+  </entitydescriptor>
+</namesegments>

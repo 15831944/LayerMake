@@ -89,6 +89,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="layermake.xml">
+      <SubType>Designer</SubType>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LayerMakeForm.cs">
@@ -101,6 +104,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LayerMakeCommands.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MoreForm.Designer.cs">
+      <DependentUpon>MoreForm.cs</DependentUpon>
     </Compile>
     <Compile Include="myPlugin.cs" />
     <Compile Include="LayerMakeCommands.cs" />
