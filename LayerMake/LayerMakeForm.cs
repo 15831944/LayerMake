@@ -511,6 +511,10 @@ namespace LayerMake
             //// /// layerList[selectedItem.text].SetLine(lineName);
         }
 
+
+        /// <summary>
+        /// Opens an AutoCAD linetype dialog box to let the user choose a linetype for the currently selected layer
+        /// </summary>
         private void SelectLine()
         {
             Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
@@ -519,20 +523,25 @@ namespace LayerMake
 
             Editor ed = doc.Editor;
 
+            // default setting for linetype, in case one is not selected
             string lineName = "Continuous";
 
             LinetypeDialog ltd = new LinetypeDialog();
 
+            // using will close connection when finished. Causes problems otherwise
             using (Transaction tr = db.TransactionManager.StartTransaction())
             {
                 LinetypeTable lt = (LinetypeTable)tr.GetObject(db.LinetypeTableId, OpenMode.ForRead);
 
                 DialogResult dr = ltd.ShowDialog();
 
+                // if OK is clicked on linetype dialog box
                 if (dr == DialogResult.OK)
                 {
                     LinetypeTableRecord symbol = (LinetypeTableRecord)tr.GetObject(ltd.Linetype, OpenMode.ForRead);
 
+                    // if user does not select ByLayer or ByBlock as linetype, set lineName to their selection
+                    // otherwise, leave it as Continuous
                     if (!symbol.Name.Equals("ByLayer") && !symbol.Name.Equals("ByBlock"))
                     {
                         lineName = symbol.Name;
@@ -540,7 +549,8 @@ namespace LayerMake
                 }
             }
 
-///////////////// set or return lineName
+            ////    layerList[the selected layer name]
+            this.layerList[layersListBox.SelectedItem.ToString()].SetLine(lineName);
         }
 
         /// <summary>
