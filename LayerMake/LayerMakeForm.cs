@@ -17,7 +17,11 @@ namespace LayerMake
     using System.Threading.Tasks;
     using System.Windows.Forms;
     using System.Xml;
-//    using MoreTextWindow;
+    using Autodesk.AutoCAD.ApplicationServices;
+    using Autodesk.AutoCAD.DatabaseServices;
+    using Autodesk.AutoCAD.EditorInput;
+    using Autodesk.AutoCAD.Windows;
+    //    using MoreTextWindow;
 
     /// <summary>
     /// Initializes form that allows the user to create new layers in AutoCAD
@@ -355,8 +359,8 @@ namespace LayerMake
                 this.layersListBox.Items.Add(this.layerTextBox.Text);
             }
 
- //////////// add new Layer to layerList
-            /// layerList.add(this.layerTextBox.Text, new Layer(this.layerTextBox.Text));
+            // add new Layer to layerList
+            layerList.Add(this.layerTextBox.Text, new Layer(this.layerTextBox.Text));
         }
 
         /// <summary>
@@ -460,7 +464,8 @@ namespace LayerMake
                 this.disableButtons(); // don't select anything and disable buttons
             }
 
-//////////// Remove layer from layerList
+            // Remove layer from layerList
+            layerList.Remove(this.layersListBox.SelectedItem.ToString());
         }
 
         /// <summary>
@@ -470,9 +475,28 @@ namespace LayerMake
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
         private void colorButton_Click(object sender, EventArgs e)
         {
-//////////// Open layer color editor
-//// add red, green, blue to LayerList item
-            //// layerList[selectedItem.text].SetColor(r, g, b);
+            //////////// Open layer color editor
+            //// add red, green, blue to LayerList item
+            //this.layerList[this.layersListBox.SelectedItem.ToString()].SetColor(r, g, b);
+            SelectColor();
+        }
+
+        /// <summary>
+        /// Opens an AutoCAD color dialog box to let the user choose a color for the currently selected layer
+        /// </summary>
+        private void SelectColor()
+        {
+            Autodesk.AutoCAD.Windows.ColorDialog dlg = new Autodesk.AutoCAD.Windows.ColorDialog();
+
+            // if Cancel is clicked instead of OK
+            if (dlg.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            {
+                // set selected color to White
+                dlg.Color = Autodesk.AutoCAD.Colors.Color.FromRgb(255, 255, 255);
+            }
+
+            ////    layerList[the selected layer name]                    (  Red value of the selected color,     Green value of selected color, Blue value of selected color     )
+            this.layerList[layersListBox.SelectedItem.ToString()].SetColor(dlg.Color.ColorValue.R.ToString(), dlg.Color.ColorValue.G.ToString(), dlg.Color.ColorValue.B.ToString());
         }
 
         /// <summary>
@@ -484,7 +508,39 @@ namespace LayerMake
         {
 //////////// Open layer line type editor
 //// add line to layerList item
-            //// /// layerList[selectedItem.text].SetColor(lineName);
+            //// /// layerList[selectedItem.text].SetLine(lineName);
+        }
+
+        private void SelectLine()
+        {
+            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
+
+            Database db = doc.Database;
+
+            Editor ed = doc.Editor;
+
+            string lineName = "Continuous";
+
+            LinetypeDialog ltd = new LinetypeDialog();
+
+            using (Transaction tr = db.TransactionManager.StartTransaction())
+            {
+                LinetypeTable lt = (LinetypeTable)tr.GetObject(db.LinetypeTableId, OpenMode.ForRead);
+
+                DialogResult dr = ltd.ShowDialog();
+
+                if (dr == DialogResult.OK)
+                {
+                    LinetypeTableRecord symbol = (LinetypeTableRecord)tr.GetObject(ltd.Linetype, OpenMode.ForRead);
+
+                    if (!symbol.Name.Equals("ByLayer") && !symbol.Name.Equals("ByBlock"))
+                    {
+                        lineName = symbol.Name;
+                    }
+                }
+            }
+
+///////////////// set or return lineName
         }
 
         /// <summary>
