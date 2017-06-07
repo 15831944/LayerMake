@@ -23,6 +23,10 @@ namespace LayerMake
         public Layer(string n)
         {
             name = n;
+            line = "Continuous";
+            red = "255";
+            green = "255";
+            blue = "255";
         }
 
         public void SetName(string n)

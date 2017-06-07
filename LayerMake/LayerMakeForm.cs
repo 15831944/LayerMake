@@ -21,7 +21,6 @@ namespace LayerMake
     using Autodesk.AutoCAD.DatabaseServices;
     using Autodesk.AutoCAD.EditorInput;
     using Autodesk.AutoCAD.Windows;
-    //    using MoreTextWindow;
 
     /// <summary>
     /// Initializes form that allows the user to create new layers in AutoCAD
@@ -31,7 +30,7 @@ namespace LayerMake
         /// <summary>
         /// The path to the location of the xml file with the segments of layer names
         /// </summary>
-        private string path= @"c:\users\wgoldsmith\documents\visual studio 2015\projects\layermake\layermake\layermake.xml";
+        private string path = @"c:\users\wgoldsmith\documents\visual studio 2015\projects\layermake\layermake\layermake.xml";
 // take out path if call is changed to take the path as an argument
 
         /// <summary>
@@ -83,11 +82,11 @@ namespace LayerMake
             this.InitializeComponent();
         }
 
-        //        public LayerMakeForm(string p)
-        //        {
-        //            this.path = @p; // @ makes the string literal so that slashes in path will not be escaped
-        //            this.InitializeComponent();
-        //        }
+        ////        public LayerMakeForm(string p)
+        ////        {
+        ////            this.path = @p; // @ makes the string literal so that slashes in path will not be escaped
+        ////            this.InitializeComponent();
+        ////        }
 
         /// <summary>
         /// Reads layermake.xml and adds all the seg elements into the 4 list boxes
@@ -305,8 +304,8 @@ namespace LayerMake
             this.entityTypeListBox.Items.Clear();
             this.entityDescListBox.Items.Clear();
 
-            entityDescSeg2 = "ZZZ";
-            entityDescSeg3 = "ZZZZ";
+            this.entityDescSeg2 = "ZZZ";
+            this.entityDescSeg3 = "ZZZZ";
 
             // read in all the layer name segments to be put in the list boxes from an xml file
             this.ReadXML();
@@ -358,9 +357,10 @@ namespace LayerMake
             {
                 this.layersListBox.Items.Add(this.layerTextBox.Text);
             }
+//////////////// also check if layer already exists in Autocad and bring up a pop up if it does
 
             // add new Layer to layerList
-            layerList.Add(this.layerTextBox.Text, new Layer(this.layerTextBox.Text));
+            this.layerList.Add(this.layerTextBox.Text, new Layer(this.layerTextBox.Text));
         }
 
         /// <summary>
@@ -465,20 +465,17 @@ namespace LayerMake
             }
 
             // Remove layer from layerList
-            layerList.Remove(this.layersListBox.SelectedItem.ToString());
+            this.layerList.Remove(this.layersListBox.SelectedItem.ToString());
         }
 
         /// <summary>
-        /// When user clicks color button, open the AutoCAD layer color selector
+        /// When user clicks color button, call SelectColor() to open the AutoCAD layer color selector
         /// </summary>
         /// <param name="sender">Auto generated sender object by Visual Studio.</param>
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
         private void colorButton_Click(object sender, EventArgs e)
         {
-            //////////// Open layer color editor
-            //// add red, green, blue to LayerList item
-            //this.layerList[this.layersListBox.SelectedItem.ToString()].SetColor(r, g, b);
-            SelectColor();
+            this.SelectColor();
         }
 
         /// <summary>
@@ -495,22 +492,20 @@ namespace LayerMake
                 dlg.Color = Autodesk.AutoCAD.Colors.Color.FromRgb(255, 255, 255);
             }
 
-            ////    layerList[the selected layer name]                    (  Red value of the selected color,     Green value of selected color, Blue value of selected color     )
-            this.layerList[layersListBox.SelectedItem.ToString()].SetColor(dlg.Color.ColorValue.R.ToString(), dlg.Color.ColorValue.G.ToString(), dlg.Color.ColorValue.B.ToString());
+            // set color in selected Layer in layerList
+            ////         layerList[the selected layer name]                    (  Red value of the selected color,     Green value of selected color, Blue value of selected color     )
+            this.layerList[this.layersListBox.SelectedItem.ToString()].SetColor(dlg.Color.ColorValue.R.ToString(), dlg.Color.ColorValue.G.ToString(), dlg.Color.ColorValue.B.ToString());
         }
 
         /// <summary>
-        /// When user clicks L-Type button, open the AutoCAD line type selector
+        /// When user clicks L-Type button, call SelectLine() to open the AutoCAD line type selector
         /// </summary>
         /// <param name="sender">Auto generated sender object by Visual Studio.</param>
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
         private void ltypeButton_Click(object sender, EventArgs e)
         {
-//////////// Open layer line type editor
-//// add line to layerList item
-            //// /// layerList[selectedItem.text].SetLine(lineName);
+            this.SelectLine();
         }
-
 
         /// <summary>
         /// Opens an AutoCAD linetype dialog box to let the user choose a linetype for the currently selected layer
@@ -549,8 +544,9 @@ namespace LayerMake
                 }
             }
 
+            // set line in selected Layer in layerList
             ////    layerList[the selected layer name]
-            this.layerList[layersListBox.SelectedItem.ToString()].SetLine(lineName);
+            this.layerList[this.layersListBox.SelectedItem.ToString()].SetLine(lineName);
         }
 
         /// <summary>
@@ -588,7 +584,7 @@ namespace LayerMake
         }
 
         /// <summary>
-        /// When user clicks cancel button, delete all made layers, and close form.
+        /// When user clicks cancel button, close the form without creating any layers.
         /// </summary>
         /// <param name="sender">Auto generated sender object by Visual Studio.</param>
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
@@ -598,13 +594,20 @@ namespace LayerMake
         }
 
         /// <summary>
-        /// When user clicks ok button, close form without deleting layers.
+        /// When user clicks ok button, create .
         /// </summary>
         /// <param name="sender">Auto generated sender object by Visual Studio.</param>
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
         private void okButton_Click(object sender, EventArgs e)
         {
-//////////////  make all layers in AutoCAD
+            Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor; 
+            //////////////  make all layers in AutoCAD
+            foreach (KeyValuePair<string, Layer> currLayer in layerList)
+            {
+                ////                 layer command, Make,     Layer Name          ,Color,TrueColor, Red value of current layer, Green value of curr layer    , Blue value of curr layer, Enter, LineType, Line Type of curr layer, Enter, Enter
+                ed.Command(new Object[] { "-LAYER", "M", currLayer.Value.GetName(), "C", "T", currLayer.Value.GetRed() + "," + currLayer.Value.GetGreen() + "," + currLayer.Value.GetBlue(), "", "L", currLayer.Value.GetLine(), "", "" });
+            }
+
             this.Close();
         }
     }
