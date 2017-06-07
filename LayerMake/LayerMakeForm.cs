@@ -352,15 +352,36 @@ namespace LayerMake
                 this.layerTextBox.Text = this.layerTextBox.Text.Substring(0, 17);
             }
 
-            // search layersListBox to see if there is already an identical one.
-            if (this.Unique())
-            {
-                this.layersListBox.Items.Add(this.layerTextBox.Text);
-            }
-//////////////// also check if layer already exists in Autocad and bring up a pop up if it does
+            // start: make sure layer name does not already exist in AutoCAD
+            Document acDoc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
+            Database acCurDb = acDoc.Database;
 
-            // add new Layer to layerList
-            this.layerList.Add(this.layerTextBox.Text, new Layer(this.layerTextBox.Text));
+            using (Transaction acTrans = acCurDb.TransactionManager.StartTransaction())
+            {
+                // Returns the layer table for the current database
+                LayerTable acLayerTable = acTrans.GetObject(acCurDb.LayerTableId, OpenMode.ForRead) as LayerTable; ;
+
+                // if the layer name to be added could not be found in autoCAD
+                if (acLayerTable.Has(layerTextBox.Text) != true)
+                {
+                    // search layersListBox to see if there is already an identical one.
+                    if (this.Unique())
+                    {
+                        this.layersListBox.Items.Add(this.layerTextBox.Text);
+                    }
+
+                    // add new Layer to layerList
+                    this.layerList.Add(this.layerTextBox.Text, new Layer(this.layerTextBox.Text));
+                }
+
+                // layer name was found
+                else
+                {
+                    MessageBox.Show("Layer already exists.");
+                }
+
+            }
+            // end     
         }
 
         /// <summary>
