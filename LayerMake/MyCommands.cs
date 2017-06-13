@@ -44,10 +44,6 @@ namespace LayerMake
         [CommandMethod("TESTYTEST", CommandFlags.Modal)]
         public void MyCommand5()
         {
-            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
-            Editor ed = doc.Editor;
-            ed.WriteMessage("Layermake command");
-///////////// test
             LayerMakeForm layerMaker = new LayerMakeForm();
             layerMaker.Show();
         }

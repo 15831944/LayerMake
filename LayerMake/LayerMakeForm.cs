@@ -79,13 +79,7 @@ namespace LayerMake
         /// </summary>
         public LayerMakeForm()
         {
-            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
-            Editor ed = doc.Editor;
-            ed.WriteMessage("Initialize test");
-///////////// test
             this.InitializeComponent();
-            ed.WriteMessage("Initialize end");
-///////////// test
         }
 
         ////        public LayerMakeForm(string p)
@@ -99,11 +93,6 @@ namespace LayerMake
         /// </summary>
         private void ReadXML()
         {
-            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
-            Editor ed = doc.Editor;
-            ed.WriteMessage("Read XML");
-///////////// test
-
             using (XmlReader reader = XmlReader.Create(this.path))
             {
                 while (reader.Read())
@@ -135,10 +124,6 @@ namespace LayerMake
                     }
                 }
             }
-
-            
-            ed.WriteMessage("ReadXML end");
-///////////// test
         }
 
         /// <summary>
@@ -313,12 +298,7 @@ namespace LayerMake
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
         private void LayerMakeForm_Load(object sender, EventArgs e)
         {
-            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
-            Editor ed = doc.Editor;
-            ed.WriteMessage("Layermake load");
-///////////// test
-
-
+            
             // clear out preset values in list boxes
             this.dataStateListBox.Items.Clear();
             this.categoryListBox.Items.Clear();
@@ -389,10 +369,10 @@ namespace LayerMake
                     if (this.Unique())
                     {
                         this.layersListBox.Items.Add(this.layerTextBox.Text);
-                    }
 
-                    // add new Layer to layerList
-                    this.layerList.Add(this.layerTextBox.Text, new Layer(this.layerTextBox.Text));
+                        // add new Layer to layerList
+                        this.layerList.Add(this.layerTextBox.Text, new Layer(this.layerTextBox.Text));
+                    }        
                 }
 
                 // layer name was found
@@ -589,6 +569,7 @@ namespace LayerMake
             // set line in selected Layer in layerList
             ////    layerList[the selected layer name]
             this.layerList[this.layersListBox.SelectedItem.ToString()].SetLine(lineName);
+////////////////////////////////////////////////////// bring focus back to layermake form after line is selected
         }
 
         /// <summary>
@@ -642,15 +623,19 @@ namespace LayerMake
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
         private void okButton_Click(object sender, EventArgs e)
         {
-            Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor; 
+            this.Close();
+            //            Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor; 
+            Autodesk.AutoCAD.ApplicationServices.Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
             //////////////  make all layers in AutoCAD
             foreach (KeyValuePair<string, Layer> currLayer in layerList)
             {
                 ////                 layer command, Make,     Layer Name          ,Color,TrueColor, Red value of current layer, Green value of curr layer    , Blue value of curr layer, Enter, LineType, Line Type of curr layer, Enter, Enter
-                ed.Command(new Object[] { "-LAYER", "M", currLayer.Value.GetName(), "C", "T", currLayer.Value.GetRed() + "," + currLayer.Value.GetGreen() + "," + currLayer.Value.GetBlue(), "", "L", currLayer.Value.GetLine(), "", "" });
-            }
+                //ed.Command(new Object[] { "-LAYER", "M", currLayer.Value.GetName(), "C", "T", currLayer.Value.GetRed() + "," + currLayer.Value.GetGreen() + "," + currLayer.Value.GetBlue(), "", "L", currLayer.Value.GetLine(), "", "" });
 
-            this.Close();
+                doc.SendStringToExecute("-LAYER M " + currLayer.Value.GetName() + "\n", true, false, false);
+                doc.SendStringToExecute("C T " + currLayer.Value.GetRed() + "," + currLayer.Value.GetGreen() + "," + currLayer.Value.GetBlue() + "\n\n", true, false, false);
+                doc.SendStringToExecute("L " + currLayer.Value.GetLine() + "\n\n\n", true, false, false);
+            }
         }
     }
 }

@@ -101,11 +101,6 @@
     <Compile Include="LayerMakeForm.Designer.cs">
       <DependentUpon>LayerMakeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyCommands.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MyCommands.resx</DependentUpon>
-    </Compile>
     <Compile Include="MoreForm.cs">
       <SubType>Form</SubType>
     </Compile>
