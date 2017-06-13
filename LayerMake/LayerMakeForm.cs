@@ -79,7 +79,13 @@ namespace LayerMake
         /// </summary>
         public LayerMakeForm()
         {
+            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
+            Editor ed = doc.Editor;
+            ed.WriteMessage("Initialize test");
+///////////// test
             this.InitializeComponent();
+            ed.WriteMessage("Initialize end");
+///////////// test
         }
 
         ////        public LayerMakeForm(string p)
@@ -93,6 +99,11 @@ namespace LayerMake
         /// </summary>
         private void ReadXML()
         {
+            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
+            Editor ed = doc.Editor;
+            ed.WriteMessage("Read XML");
+///////////// test
+
             using (XmlReader reader = XmlReader.Create(this.path))
             {
                 while (reader.Read())
@@ -124,6 +135,10 @@ namespace LayerMake
                     }
                 }
             }
+
+            
+            ed.WriteMessage("ReadXML end");
+///////////// test
         }
 
         /// <summary>
@@ -298,6 +313,12 @@ namespace LayerMake
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
         private void LayerMakeForm_Load(object sender, EventArgs e)
         {
+            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
+            Editor ed = doc.Editor;
+            ed.WriteMessage("Layermake load");
+///////////// test
+
+
             // clear out preset values in list boxes
             this.dataStateListBox.Items.Clear();
             this.categoryListBox.Items.Clear();

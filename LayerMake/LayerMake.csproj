@@ -101,10 +101,10 @@
     <Compile Include="LayerMakeForm.Designer.cs">
       <DependentUpon>LayerMakeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LayerMakeCommands.Designer.cs">
+    <Compile Include="MyCommands.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LayerMakeCommands.resx</DependentUpon>
+      <DependentUpon>MyCommands.resx</DependentUpon>
     </Compile>
     <Compile Include="MoreForm.cs">
       <SubType>Form</SubType>
@@ -113,14 +113,14 @@
       <DependentUpon>MoreForm.cs</DependentUpon>
     </Compile>
     <Compile Include="myPlugin.cs" />
-    <Compile Include="LayerMakeCommands.cs" />
+    <Compile Include="MyCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="LayerMakeCommands.resx">
-      <DependentUpon>LayerMakeCommands.cs</DependentUpon>
+    <EmbeddedResource Include="MyCommands.resx">
+      <DependentUpon>MyCommands.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>LayerMakeCommands.Designer.cs</LastGenOutput>
+      <LastGenOutput>MyCommands.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="LayerMakeForm.resx">
       <DependentUpon>LayerMakeForm.cs</DependentUpon>

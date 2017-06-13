@@ -9,7 +9,7 @@ using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Windows;
 
 // This line is not mandatory, but improves loading performances
-[assembly: CommandClass(typeof(LayerMake.LayerMakeCommands))]
+[assembly: CommandClass(typeof(LayerMake.MyCommands))]
 
 namespace LayerMake
 {
@@ -30,9 +30,24 @@ namespace LayerMake
         // NOTE: CommandMethod has overloads where you can provide helpid and
         // context menu.
 
-        [CommandMethod("lm", CommandFlags.Modal)]
+        [CommandMethod("LM", CommandFlags.Modal)]
         public void MyCommand4()
         {
+            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
+            Editor ed = doc.Editor;
+            ed.WriteMessage("Layermake command");
+///////////// test
+            LayerMakeForm layerMaker = new LayerMakeForm();
+            layerMaker.Show();
+        }
+
+        [CommandMethod("TESTYTEST", CommandFlags.Modal)]
+        public void MyCommand5()
+        {
+            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
+            Editor ed = doc.Editor;
+            ed.WriteMessage("Layermake command");
+///////////// test
             LayerMakeForm layerMaker = new LayerMakeForm();
             layerMaker.Show();
         }
