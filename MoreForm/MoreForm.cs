@@ -1,22 +1,15 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="MoreForm.cs" company="Goldsmith Engineering">
-//     Copyright (c) Goldsmith Engineering. All rights reserved.
-// </copyright>
-// <author>Winston Goldsmith</author>
-//-----------------------------------------------------------------------
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace LayerMake
+namespace MoreForm
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Windows.Forms;
-
     public partial class MoreForm : Form
     {
         /// <summary>
@@ -54,6 +47,6 @@ namespace LayerMake
             if (listBox1.SelectedIndex >= 0) // if something is selected
                 lmListBox.SelectedItem = listBox1.SelectedItem;
             this.Close();
-        }
+        } 
     }
 }

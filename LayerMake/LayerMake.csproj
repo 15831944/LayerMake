@@ -101,11 +101,10 @@
     <Compile Include="LayerMakeForm.Designer.cs">
       <DependentUpon>LayerMakeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MoreForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MoreForm.Designer.cs">
-      <DependentUpon>MoreForm.cs</DependentUpon>
+    <Compile Include="MyCommands.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyCommands.resx</DependentUpon>
     </Compile>
     <Compile Include="myPlugin.cs" />
     <Compile Include="MyCommands.cs" />
@@ -142,6 +141,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MoreForm\MoreForm.csproj">
+      <Project>{B56C2582-02A6-483E-B60E-57ADB03D9EE5}</Project>
+      <Name>MoreForm</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

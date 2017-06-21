@@ -629,7 +629,7 @@
             // layersLabel
             // 
             this.layersLabel.AutoSize = true;
-            this.layersLabel.Location = new System.Drawing.Point(12, 300);
+            this.layersLabel.Location = new System.Drawing.Point(12, 298);
             this.layersLabel.Name = "layersLabel";
             this.layersLabel.Size = new System.Drawing.Size(63, 13);
             this.layersLabel.TabIndex = 13;

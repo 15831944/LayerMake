@@ -1,4 +1,4 @@
-﻿namespace LayerMake
+﻿namespace MoreForm
 {
     partial class MoreForm
     {
@@ -89,3 +89,4 @@
         private System.Windows.Forms.Button cancelButton;
     }
 }
+

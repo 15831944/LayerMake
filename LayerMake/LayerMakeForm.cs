@@ -5,6 +5,8 @@
 // <author>Winston Goldsmith</author>
 //-----------------------------------------------------------------------
 
+using MoreForm;
+
 namespace LayerMake
 {
     using System;
@@ -21,6 +23,7 @@ namespace LayerMake
     using Autodesk.AutoCAD.DatabaseServices;
     using Autodesk.AutoCAD.EditorInput;
     using Autodesk.AutoCAD.Windows;
+    using MoreForm;
 
     /// <summary>
     /// Initializes form that allows the user to create new layers in AutoCAD
@@ -472,6 +475,9 @@ namespace LayerMake
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            // Remove layer from layerList
+            this.layerList.Remove(this.layersListBox.SelectedItem.ToString());
+
             // get current index so that, when the selected item is deleted, the item that takes its place will be selected.
             int index = this.layersListBox.SelectedIndex;
             this.layersListBox.Items.RemoveAt(this.layersListBox.SelectedIndex);
@@ -485,9 +491,6 @@ namespace LayerMake
             { // deleted item was last in the list
                 this.disableButtons(); // don't select anything and disable buttons
             }
-
-            // Remove layer from layerList
-            this.layerList.Remove(this.layersListBox.SelectedItem.ToString());
         }
 
         /// <summary>
@@ -579,6 +582,7 @@ namespace LayerMake
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
         private void moreCatButton_Click(object sender, EventArgs e)
         {
+/////////////////////////////////////////////////////////  issues
             this.textForm = new MoreForm(this.categoryListBox);
             this.textForm.ShowDialog(this); // disables LayerMakeForm while MoreForm is active
         }
@@ -590,6 +594,7 @@ namespace LayerMake
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
         private void moreEntButton_Click(object sender, EventArgs e)
         {
+/////////////////////////////////////////////////////////  issues
             this.textForm = new MoreForm(this.entityDescListBox);
             this.textForm.ShowDialog(this); // disables LayerMakeForm while MoreForm is active
         }
