@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MoreForm.Properties
+namespace More.Properties
 {
 
 

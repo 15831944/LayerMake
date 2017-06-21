@@ -5,7 +5,7 @@
 // <author>Winston Goldsmith</author>
 //-----------------------------------------------------------------------
 
-using MoreForm;
+using More;
 
 namespace LayerMake
 {
@@ -23,7 +23,7 @@ namespace LayerMake
     using Autodesk.AutoCAD.DatabaseServices;
     using Autodesk.AutoCAD.EditorInput;
     using Autodesk.AutoCAD.Windows;
-    using MoreForm;
+    using More;
 
     /// <summary>
     /// Initializes form that allows the user to create new layers in AutoCAD
