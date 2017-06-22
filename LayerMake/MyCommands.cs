@@ -33,10 +33,6 @@ namespace LayerMake
         [CommandMethod("LM", CommandFlags.Modal)]
         public void MyCommand4()
         {
-            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
-            Editor ed = doc.Editor;
-            ed.WriteMessage("Layermake command");
-///////////// test
             LayerMakeForm layerMaker = new LayerMakeForm();
             layerMaker.Show();
         }
@@ -48,97 +44,97 @@ namespace LayerMake
             layerMaker.Show();
         }
 
-        [CommandMethod("ltest", CommandFlags.Modal)]
-        public void MyCommand3() // This method can have any name
-        {
-            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
-
-            Database db = doc.Database;
-
-            Editor ed = doc.Editor;
-
-            string lineName = "Continuous"; // default value of Continuous
-
-            LinetypeDialog ltd = new LinetypeDialog();
-
-            // using will close connection when finished. Causes problems otherwise
-            using (Transaction tr = db.TransactionManager.StartTransaction())
-            {
-                LinetypeTable lt = (LinetypeTable)tr.GetObject(db.LinetypeTableId, OpenMode.ForRead);
-
-                System.Windows.Forms.DialogResult dr = ltd.ShowDialog();
-
-                if (dr == System.Windows.Forms.DialogResult.OK)
-                {
-
-                    LinetypeTableRecord symbol = (LinetypeTableRecord)tr.GetObject(ltd.Linetype, OpenMode.ForRead);
-
-                    if (!symbol.Name.Equals("ByLayer") && !symbol.Name.Equals("ByBlock"))
-                    {
-                        lineName = symbol.Name;
-                    }
-
-                    ed.WriteMessage("\nLinetype selected: " + symbol.Name + "\n");
-                }
-            }
-
-            ed.Command(new Object[] { "-LAYER", "L", lineName, "", "" });
-        }
-
-        // Modal Command with localized name
-        //[CommandMethod("coltest", CommandFlags.Modal)]
-        //public void MyCommand() // This method can have any name
+        //[CommandMethod("ltest", CommandFlags.Modal)]
+        //public void MyCommand3() // This method can have any name
         //{
-        //    //Autodesk.AutoCAD.ApplicationServices.Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
-        //    //doc.SendStringToExecute("LAYDEL N stuff ", true, false, false);
-
         //    Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
+
+        //    Database db = doc.Database;
 
         //    Editor ed = doc.Editor;
 
-        //    Autodesk.AutoCAD.Windows.ColorDialog dlg = new Autodesk.AutoCAD.Windows.ColorDialog();
+        //    string lineName = "Continuous"; // default value of Continuous
 
-        //    //if (dlg.ShowDialog() != System.Windows.Forms.DialogResult.OK)
-        //    //{
-        //    //    return;
-        //    //}
-        //    dlg.ShowDialog();
+        //    LinetypeDialog ltd = new LinetypeDialog();
 
-        //    ed.WriteMessage(dlg.ToString()+"\n");
-        //    ed.WriteMessage(dlg.Color.ColorValue.R.ToString()+"\n");
-        //    ed.WriteMessage(dlg.Color.ColorValue.ToString()+"\n");
-        //    ed.WriteMessage(dlg.Color.ColorName+"\n");
-        //    ed.WriteMessage(dlg.Color.ColorIndex.ToString());
+        //    // using will close connection when finished. Causes problems otherwise
+        //    using (Transaction tr = db.TransactionManager.StartTransaction())
+        //    {
+        //        LinetypeTable lt = (LinetypeTable)tr.GetObject(db.LinetypeTableId, OpenMode.ForRead);
+
+        //        System.Windows.Forms.DialogResult dr = ltd.ShowDialog();
+
+        //        if (dr == System.Windows.Forms.DialogResult.OK)
+        //        {
+
+        //            LinetypeTableRecord symbol = (LinetypeTableRecord)tr.GetObject(ltd.Linetype, OpenMode.ForRead);
+
+        //            if (!symbol.Name.Equals("ByLayer") && !symbol.Name.Equals("ByBlock"))
+        //            {
+        //                lineName = symbol.Name;
+        //            }
+
+        //            ed.WriteMessage("\nLinetype selected: " + symbol.Name + "\n");
+        //        }
+        //    }
+
+        //    ed.Command(new Object[] { "-LAYER", "L", lineName, "", "" });
         //}
 
-        // Modal Command with localized name
-        [CommandMethod("ctest", CommandFlags.Modal)]
-        public void MyCommand2() // This method can have any name
-        {
-            Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;
+        //// Modal Command with localized name
+        ////[CommandMethod("coltest", CommandFlags.Modal)]
+        ////public void MyCommand() // This method can have any name
+        ////{
+        ////    //Autodesk.AutoCAD.ApplicationServices.Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
+        ////    //doc.SendStringToExecute("LAYDEL N stuff ", true, false, false);
 
-            ed.Command(new Object[] { "-LAYER", "M", "NEWNAME", "" });
+        ////    Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
 
-            Autodesk.AutoCAD.Windows.ColorDialog col = SelectColor();
+        ////    Editor ed = doc.Editor;
 
-            ChangeColor(col.Color.ColorValue.R.ToString(), col.Color.ColorValue.G.ToString(), col.Color.ColorValue.B.ToString());
+        ////    Autodesk.AutoCAD.Windows.ColorDialog dlg = new Autodesk.AutoCAD.Windows.ColorDialog();
 
-            MyCommand3();
-        }
+        ////    //if (dlg.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+        ////    //{
+        ////    //    return;
+        ////    //}
+        ////    dlg.ShowDialog();
 
-        private Autodesk.AutoCAD.Windows.ColorDialog SelectColor()
-        {
-            Autodesk.AutoCAD.Windows.ColorDialog dlg = new Autodesk.AutoCAD.Windows.ColorDialog();
+        ////    ed.WriteMessage(dlg.ToString()+"\n");
+        ////    ed.WriteMessage(dlg.Color.ColorValue.R.ToString()+"\n");
+        ////    ed.WriteMessage(dlg.Color.ColorValue.ToString()+"\n");
+        ////    ed.WriteMessage(dlg.Color.ColorName+"\n");
+        ////    ed.WriteMessage(dlg.Color.ColorIndex.ToString());
+        ////}
 
-            dlg.ShowDialog();
+        //// Modal Command with localized name
+        //[CommandMethod("ctest", CommandFlags.Modal)]
+        //public void MyCommand2() // This method can have any name
+        //{
+        //    Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;
 
-            return dlg;
-        }
+        //    ed.Command(new Object[] { "-LAYER", "M", "NEWNAME", "" });
 
-        private void ChangeColor(string red, string green, string blue)
-        {
-            Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;
-            ed.Command(new Object[] { "-LAYER", "C", "T", red + "," + green + "," + blue, "", "" });
-        }
+        //    Autodesk.AutoCAD.Windows.ColorDialog col = SelectColor();
+
+        //    ChangeColor(col.Color.ColorValue.R.ToString(), col.Color.ColorValue.G.ToString(), col.Color.ColorValue.B.ToString());
+
+        //    MyCommand3();
+        //}
+
+        //private Autodesk.AutoCAD.Windows.ColorDialog SelectColor()
+        //{
+        //    Autodesk.AutoCAD.Windows.ColorDialog dlg = new Autodesk.AutoCAD.Windows.ColorDialog();
+
+        //    dlg.ShowDialog();
+
+        //    return dlg;
+        //}
+
+        //private void ChangeColor(string red, string green, string blue)
+        //{
+        //    Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;
+        //    ed.Command(new Object[] { "-LAYER", "C", "T", red + "," + green + "," + blue, "", "" });
+        //}
     }
 }

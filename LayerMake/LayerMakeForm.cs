@@ -5,8 +5,6 @@
 // <author>Winston Goldsmith</author>
 //-----------------------------------------------------------------------
 
-using More;
-
 namespace LayerMake
 {
     using System;
@@ -242,8 +240,8 @@ namespace LayerMake
 
         /// <summary>
         /// When the selected item in entityDescListBox is changed, 
-        /// change the Entity Description segment of the layer name (after the last '-')
-// some more stuff        /// 
+        /// change the Entity Description segment of the layer name (after the last "-")
+        /// then update layerTextBox
         /// </summary>
         /// <param name="sender">Auto generated sender object by Visual Studio.</param>
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
@@ -269,25 +267,17 @@ namespace LayerMake
 
             if (this.radioButton1.Checked)
             {
-                ////                                                     (to take off extra Z)
-                ////                         first 7 characters in textBox     + first 3 chars of ent + starting at tenth char to the end of the string 
-                ////this.layerTextBox.Text = this.layerTextBox.Text.Substring(0, 7) + ent.Substring(0, 3) + this.layerTextBox.Text.Substring(10);
-
+                ////                = first 3 chars of selected line in entDescListBox
                 this.entityDescSeg1 = ent.Substring(0, 3);
             }
             else if (this.radioButton2.Checked)
             {
-                ////                                                       (to take off extra Z)
-                ////                         first 10 characters in textBox     + first 3 chars of ent + starting at thirteenth char to the end of the string 
-                ////this.layerTextBox.Text = this.layerTextBox.Text.Substring(0, 10) + ent.Substring(0, 3) + this.layerTextBox.Text.Substring(13);
-
+                ////                = first 3 chars of selected line in entDescListBox
                 this.entityDescSeg2 = ent.Substring(0, 3);
             }
             else
             { // radioButton3.checked
-                ////                          first 13 characters in textBox     + ent
-                ////this.layerTextBox.Text = this.layerTextBox.Text.Substring(0, 13) + ent;
-
+                ////                = first 3 chars of selected line in entDescListBox + 1 trailing Z
                 this.entityDescSeg3 = ent;
             }
 
@@ -301,7 +291,6 @@ namespace LayerMake
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
         private void LayerMakeForm_Load(object sender, EventArgs e)
         {
-            
             // clear out preset values in list boxes
             this.dataStateListBox.Items.Clear();
             this.categoryListBox.Items.Clear();
@@ -363,7 +352,7 @@ namespace LayerMake
             using (Transaction acTrans = acCurDb.TransactionManager.StartTransaction())
             {
                 // Returns the layer table for the current database
-                LayerTable acLayerTable = acTrans.GetObject(acCurDb.LayerTableId, OpenMode.ForRead) as LayerTable; ;
+                LayerTable acLayerTable = acTrans.GetObject(acCurDb.LayerTableId, OpenMode.ForRead) as LayerTable;
 
                 // if the layer name to be added could not be found in autoCAD
                 if (acLayerTable.Has(layerTextBox.Text) != true)
@@ -383,8 +372,8 @@ namespace LayerMake
                 {
                     MessageBox.Show("Layer already exists.");
                 }
-
             }
+
             // end     
         }
 
@@ -572,7 +561,9 @@ namespace LayerMake
             // set line in selected Layer in layerList
             ////    layerList[the selected layer name]
             this.layerList[this.layersListBox.SelectedItem.ToString()].SetLine(lineName);
-////////////////////////////////////////////////////// bring focus back to layermake form after line is selected
+
+            // brings form back to the front
+            this.Activate();
         }
 
         /// <summary>
@@ -582,7 +573,6 @@ namespace LayerMake
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
         private void moreCatButton_Click(object sender, EventArgs e)
         {
-/////////////////////////////////////////////////////////  issues
             this.textForm = new MoreForm(this.categoryListBox);
             this.textForm.ShowDialog(this); // disables LayerMakeForm while MoreForm is active
         }
@@ -594,7 +584,6 @@ namespace LayerMake
         /// <param name="e">Auto generated EventArgs by Visual Studio.</param>
         private void moreEntButton_Click(object sender, EventArgs e)
         {
-/////////////////////////////////////////////////////////  issues
             this.textForm = new MoreForm(this.entityDescListBox);
             this.textForm.ShowDialog(this); // disables LayerMakeForm while MoreForm is active
         }
@@ -629,10 +618,11 @@ namespace LayerMake
         private void okButton_Click(object sender, EventArgs e)
         {
             this.Close();
-            //            Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor; 
+
+            // Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor; 
             Autodesk.AutoCAD.ApplicationServices.Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
-            //////////////  make all layers in AutoCAD
-            foreach (KeyValuePair<string, Layer> currLayer in layerList)
+
+            foreach (KeyValuePair<string, Layer> currLayer in this.layerList)
             {
                 ////                 layer command, Make,     Layer Name          ,Color,TrueColor, Red value of current layer, Green value of curr layer    , Blue value of curr layer, Enter, LineType, Line Type of curr layer, Enter, Enter
                 //ed.Command(new Object[] { "-LAYER", "M", currLayer.Value.GetName(), "C", "T", currLayer.Value.GetRed() + "," + currLayer.Value.GetGreen() + "," + currLayer.Value.GetBlue(), "", "L", currLayer.Value.GetLine(), "", "" });
